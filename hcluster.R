@@ -1,0 +1,5 @@
+shopmall_2500[[center_name]] <<- data.frame(lon = shopmall_2500_result[[center_name]]$geometry.location.lng,lat= shopmall_2500_result[[center_name]]$geometry.location.lat)
+# shopmall_2500[[center_name]] <<- data.frame(lon = shopmall_2500_result[[center_name]]$results$geometry$location$lng,lat= shopmall_2500_result[[center_name]]$results$geometry$location$lat)
+DR[[center_name]] <<- caldistMatrix(shopmall_2500[[center_name]][,c("lon","lat")])
+hc[[center_name]] <<- hclust(as.dist(DR[[center_name]]),method = "average")
+clusters[[center_name]] <<- cutree(hc[[center_name]],h = 800)
